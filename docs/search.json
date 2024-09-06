@@ -28,5 +28,16 @@
     "crumbs": [
       "Notes"
     ]
+  },
+  {
+    "objectID": "activities/activity-03.html",
+    "href": "activities/activity-03.html",
+    "title": "3  Activity 03",
+    "section": "",
+    "text": "hello world",
+    "crumbs": [
+      "Activities",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Activity 03</span>"
+    ]
   }
 ]
