@@ -1,4 +1,157 @@
 ---
-title: "Activity 01"
+title: "Activity 01- Data Viz"
 ---
+
+```{r, message=FALSE}
+# Load the package
+library(tidyverse)
+
+# Import data
+hikes <- read.csv("https://mac-stat.github.io/data/high_peaks.csv")
+```
+
+```{r}
+head(hikes)
+```
+
+What features would we like a visualization of the categorical difficulty rating variable to capture?
+- A bar chart would be good for a categorical variable such as difficulty.
+
+What about a visualization of the quantitative elevation variable?
+- A histogram would be good for elevation variable.
+
+
+```{r}
+# Use the ggplot function
+ggplot(hikes, aes(x = rating))
+
+# Adding geom_bar() indicates what kind of graph to create
+ggplot(hikes, aes(x = rating)) +
+  geom_bar()
+
+# Changes the axis labels
+ggplot(hikes, aes(x = rating)) +
+  geom_bar() +
+  labs(x = "Rating", y = "Number of hikes")
+
+# Changes the color of the bar chart
+ggplot(hikes, aes(x = rating)) +
+  geom_bar(fill = "blue") +
+  labs(x = "Rating", y = "Number of hikes")
+
+# Adds an orange outline
+ggplot(hikes, aes(x = rating)) +
+  geom_bar(color = "orange", fill = "blue") +
+  labs(x = "Rating", y = "Number of hikes")
+
+# Changes the theme of the graph, making the background white
+ggplot(hikes, aes(x = rating)) +
+  geom_bar(color = "orange", fill = "blue")  +
+  labs(x = "Rating", y = "Number of hikes") +
+  theme_minimal()
+```
+
+Part a
+Reflect on the ggplot() code.
+
+What’s the purpose of the +? When do we use it?
+- the + indicates that another function is being added to the ggplot function.
+
+We added the bars using geom_bar()? Why “geom”?
+- It indicates that the graph is geometric
+
+What does labs() stand for?
+- labs() stands for labels
+
+What’s the difference between color and fill?
+- color changes the color of the border, fill changes the color of the entire bar.
+
+Part b
+In general, bar charts allow us to examine the following properties of a categorical variable:
+observed categories: What categories did we observe?
+- difficulty
+
+variability between categories: Are observations evenly spread out among the categories, or are some categories more common than others?
+- moderate is by far the most common category
+
+We must then translate this information into the context of our analysis, here hikes in the Adirondacks. Summarize below what you learned from the bar chart, in context.
+
+Part c
+Is there anything you don’t like about this barplot? For example: check out the x-axis again.
+- the x-axis is in alphabetical order not order of difficulty.
+
+
+Exercise 6
+```{r}
+ggplot(hikes, aes(x = elevation)) +
+  geom_bar()
+```
+This is NOT an effective visualization because it creates a new bar for every unique elevation, making the bars small and difficult to read as very few peaks have the exact same elevation.
+
+Exercise 8
+```{r}
+ggplot(hikes, aes(x = elevation)) +
+  geom_histogram()
+```
+Exercise 9
+```{r}
+# Adds a histogram plot
+ggplot(hikes, aes(x = elevation)) +
+  geom_histogram()
+
+# Adds white border to bars in plot
+ggplot(hikes, aes(x = elevation)) +
+  geom_histogram(color = "white") 
+
+# Makes the bars blue
+ggplot(hikes, aes(x = elevation)) +
+  geom_histogram(color = "white", fill = "blue") 
+
+# Adds axis labels
+ggplot(hikes, aes(x = elevation)) +
+  geom_histogram(color = "white") +
+  labs(x = "Elevation (feet)", y = "Number of hikes")
+
+# Changes the range of each bar to 1000
+ggplot(hikes, aes(x = elevation)) +
+  geom_histogram(color = "white", binwidth = 1000) +
+  labs(x = "Elevation (feet)", y = "Number of hikes")
+
+# Changes the range of each bar to 2
+ggplot(hikes, aes(x = elevation)) +
+  geom_histogram(color = "white", binwidth = 5) +
+  labs(x = "Elevation (feet)", y = "Number of hikes")
+
+# Changes the range of each bar to 200
+ggplot(hikes, aes(x = elevation)) +
+  geom_histogram(color = "white", binwidth = 200) +
+  labs(x = "Elevation (feet)", y = "Number of hikes")
+```
+
+Exercise 11
+```{r}
+ggplot(hikes, aes(x = elevation)) +
+  geom_density(color = "blue", fill = "orange")
+```
+
+ggplot template:
+```{r}
+#ggplot(___, aes(x = ___)) + 
+  #geom___(color = "___", fill = "___") + 
+  #labs(x = "___", y = "___")
+```
+
+
+PRACTICE
+```{r}
+# Data on students in this class
+survey <- read.csv("https://ajohns24.github.io/data/112/about_us_2024.csv")
+
+# World Cup data
+world_cup <- read.csv("https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2022/2022-11-29/worldcups.csv")
+```
+
+```{r, survey plots}
+
+```
 
