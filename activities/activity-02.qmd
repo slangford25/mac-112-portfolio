@@ -1,4 +1,58 @@
 ---
-title: "Activity 02"
+title: "Activity 02- Bivariate Viz"
 ---
 
+```{r}
+# Load data
+elections <- read.csv("https://mac-stat.github.io/data/election_2020_county.csv")
+
+# Check it out
+head(elections)
+```
+Exercise 0: Review
+
+```{r}
+ggplot(elections, aes(x=winner_20)) +
+  geom_bar()
+
+ggplot(elections, aes(repub_pct_20)) +
+  geom_histogram(fill="blue")
+```
+
+Exercise 1 Quantitative vs Quantitative Intuition Check
+
+```{r}
+ggplot(elections, aes(x=repub_pct_16, y=repub_pct_20)) +
+  geom_point()
+```
+
+Exercise 2: 2 Quantitiative Variables
+```{r}
+# Set up the plotting frame
+# How does this differ than the frame for our histogram of repub_pct_20 alone?
+ggplot(elections, aes(y = repub_pct_20, x = repub_pct_16))
+
+# Add a layer of points for each county
+# Take note of the geom!
+ggplot(elections, aes(y = repub_pct_20, x = repub_pct_16)) +
+  geom_point()
+
+# Change the shape of the points
+# What happens if you change the shape to another number?
+ggplot(elections, aes(y = repub_pct_20, x = repub_pct_16)) +
+  geom_point(shape = 4)
+
+# YOU TRY: Modify the code to make the points "orange"
+# NOTE: Try to anticipate if "color" or "fill" will be useful here. Then try both.
+ggplot(elections, aes(y = repub_pct_20, x = repub_pct_16)) +
+  geom_point(color = "orange")
+```
+
+Exercise 3: Reflect
+Summarize the relationship between the Republican support in 2020 and 2016. Be sure to comment on:
+
+the strength of the relationship (weak/moderate/strong)
+the direction of the relationship (positive/negative)
+outliers (in what state do counties deviate from the national trend? Any ideas why this might be the case?)
+
+Republican support in 2020 and 2016 have a strong positive correlation. There are 
