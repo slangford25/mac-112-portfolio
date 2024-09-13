@@ -152,6 +152,10 @@ world_cup <- read.csv("https://raw.githubusercontent.com/rfordatascience/tidytue
 ```
 
 ```{r, survey plots}
+ggplot(data=survey, aes(x = minutes_to_campus)) + 
+  geom_histogram(color = "purple", fill = "navy")
 
+ggplot(data=world_cup, aes(x=host)) +
+  geom_bar(fill="green")
 ```
 
