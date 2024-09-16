@@ -31,5 +31,5 @@ format:
     code-tools: true
 
 execute:
-  cache: true
+  cache: false
   freeze: auto
