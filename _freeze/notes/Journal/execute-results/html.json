@@ -1,0 +1,17 @@
+{
+  "hash": "f18f1ed104a5c764b2771eb03a90295d",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntitle: \"Journal\"\n---\n\n\n# 3. Data Viz\n\nData Viz: displaying data in such a way that we can glean more information about the data, such as patterns, typical outcomes, and distribution.\n\n### Components of graphs:\n- frame (sets up the grid and axes)\n- layer (adds the geometric elements that make up the graph, called geom_ in ggplot)\n- scales (changes color/size/shape/etc)\n- faceting (splits up the data )\n- theme (finer scale adjustments like font size)\n\n### For one variable viz:\n- categorical: bar plot\n- numerical: histogram/density plot\n\nggplot syntax:\n\n::: {.cell}\n\n```{.r .cell-code}\nggplot(data = ___, aes(x = ___)) + \n  geom___(color = \"___\", fill = \"___\") + \n  labs(x = \"___\", y = \"___\")\n```\n:::\n\n\n### When discussing data visualizations, you typically look at:\n- typical outcome\n- variability + range\n- shape\n- outliers\n\n\n# 4. Bivariate Viz\n\nAnother way to look at the data is to look at relationships within the data. There are\n- Repsonse variables (dependent variables)\n- Predictors (independent variables)\n\n### What plots to use:\n- 2 quantitative: scatterplot\n- 2 categorical: stacked bar/facet wrapped bar plot\n- 1 quantitative, 1 categorical: violin plot, boxplot, stacked density plots.\n\n# 5. Multivariate Viz\n\nWhich chart to use:\n\n- 3 cat: bar (x, color, facet)\n- 2 cat, 1 num: histogram/density (color, facet, x), box, violin (x, facet, y)\n- 1 cat, 2 num: scatter (facet/color/shape, x, y), heatmap (y, x, shade), star (y, size, )\n- 3 num: scatter (x, y, size/shade)\n\n\n\n",
+    "supporting": [
+      "Journal_files"
+    ],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

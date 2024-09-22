@@ -1,0 +1,55 @@
+---
+title: "Journal"
+---
+
+# 3. Data Viz
+
+Data Viz: displaying data in such a way that we can glean more information about the data, such as patterns, typical outcomes, and distribution.
+
+### Components of graphs:
+- frame (sets up the grid and axes)
+- layer (adds the geometric elements that make up the graph, called geom_ in ggplot)
+- scales (changes color/size/shape/etc)
+- faceting (splits up the data )
+- theme (finer scale adjustments like font size)
+
+### For one variable viz:
+- categorical: bar plot
+- numerical: histogram/density plot
+
+ggplot syntax:
+```{r, eval=FALSE}
+ggplot(data = ___, aes(x = ___)) + 
+  geom___(color = "___", fill = "___") + 
+  labs(x = "___", y = "___")
+```
+
+### When discussing data visualizations, you typically look at:
+- typical outcome
+- variability + range
+- shape
+- outliers
+
+
+# 4. Bivariate Viz
+
+Another way to look at the data is to look at relationships within the data. There are
+- Repsonse variables (dependent variables)
+- Predictors (independent variables)
+
+### What plots to use:
+- 2 quantitative: scatterplot
+- 2 categorical: stacked bar/facet wrapped bar plot
+- 1 quantitative, 1 categorical: violin plot, boxplot, stacked density plots.
+
+# 5. Multivariate Viz
+
+Which chart to use:
+
+- 3 cat: bar (x, color, facet)
+- 2 cat, 1 num: histogram/density (color, facet, x), box, violin (x, facet, y)
+- 1 cat, 2 num: scatter (facet/color/shape, x, y), heatmap (y, x, shade), star (y, size, )
+- 3 num: scatter (x, y, size/shade)
+
+
+
