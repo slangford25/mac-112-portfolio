@@ -438,16 +438,16 @@ To make this map, we again need two pieces of information.
 
 ```{r}
 # We'll learn this syntax soon! Don't worry about it now.
-#starbucks_cma <- starbucks %>% 
-#  filter(Country %in% c('CA', 'MX', 'US'))
+starbucks_cma <- starbucks %>% 
+  filter(Country %in% c('CA', 'MX', 'US'))
 ```
 
 2.  A background map of state- and national-level boundaries in Canada, Mexico, and the US. This requires `ne_states()` in the `rnaturalearth` package where the countries are labeled 'canada', 'mexico', 'united states of america'.
 
 ```{r}
-#cma_boundaries <- ne_states(
-#  country = c("canada", "mexico", "united states of america"),
-#  returnclass = "sf")
+cma_boundaries <- ne_states(
+  country = c("canada", "mexico", "united states of america"),
+  returnclass = "sf")
 ```
 
 ##### Part b {-}
