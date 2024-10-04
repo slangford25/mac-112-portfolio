@@ -445,9 +445,9 @@ starbucks_cma <- starbucks %>%
 2.  A background map of state- and national-level boundaries in Canada, Mexico, and the US. This requires `ne_states()` in the `rnaturalearth` package where the countries are labeled 'canada', 'mexico', 'united states of america'.
 
 ```{r}
-cma_boundaries <- ne_states(
-  country = c("canada", "mexico", "united states of america"),
-  returnclass = "sf")
+# cma_boundaries <- ne_states(
+#   country = c("canada", "mexico", "united states of america"),
+#   returnclass = "sf")
 ```
 
 ##### Part b {-}
