@@ -52,4 +52,85 @@ Which chart to use:
 - 3 num: scatter (x, y, size/shade)
 
 
+# 6. Spatial Viz
+
+- Point map: a map that specific locations are plotted on (ex: favorite places in the twin cities).
+- Contour map: plotting density/distribution on a map rather than individual points
+- Choropleth Maps: plotting outcomes in different regions (ex: percentage of democratic votes in each state)
+
+Leaflet: a package that can be used to make interactive maps, commonly point maps
+common functions for leaflet:
+
+- leaflet() (makes the leaflet)
+- addTiles() (makes the base map)
+- addMarkers()
+- addPolygons()
+- print() (need to print to see the leaflet)
+
+ggplot is typically better for making chloropleth maps than leaflet.
+
+
+# 7. Effective Viz
+
+Effective visualizations are important in order to accurately portray your data in a way that people can understand. 
+
+Visualizations can be good, ugly, bad, or wrong. 
+
+- Good: viz is clear, easy to understand, accessible, and helpful.
+- Ugly: nothing is incorrect about the viz, but the overall aesthetic is ugly
+- Bad: the viz is “unclear, confusing, overly complicated, or deceiving”
+- Wrong: viz is incorrectly displaying the data and/or the trends
+
+In order to have effective viz you need to:
+
+- have clear, concise titles/axes
+- include a figure caption
+- include an alt caption, for screen readers
+- avoid using overly similar colors whenever possible
+- add context
+- make data anonymous when possible
+
+
+# 8. Wrangling Verbs
+
+tidyverse has many helpful functions that allow us to wrangle the data into a way that we can meaningfully create data viz.
+
+99.99% of data will not be entirely clean and ready to use. You will have to clean and reformat the data in order to use it.
+
+Some key functions to use are: 
+
+
+
+| verb        | action                                            |
+|:------------|:--------------------------------------------------|
+| `arrange`   | **arrange** the *rows* according to some *column* |
+| `filter`    | **filter** out or obtain a subset of the *rows*   |
+| `select`    | **select** a subset of *columns*                  |
+| `mutate`    | **mutate** or create a *column*                   |
+| `summarize` | calculate a numerical **summary** of a *column*   |
+| `group_by`  | **group** the *rows* by a specified *column*      |
+
+
+
+# 9. Wrangling + Dates
+
+Order of the functions matter. If you want to arrange by one column but then only include 2 different columns in your final data frame, you need to do arrange first before selecting the columns or else you will get an error.
+
+Key syntax for filtering:
+
+| symbol           | meaning                   |
+|:-----------------|:--------------------------|
+| `==`               | equal to                  |
+| `!=`               | not equal to              |
+| `>`               | greater than              |
+| `>=`              | greater than or equal to  |
+| `<`               | less than                 |
+| `<=`              | less than or equal to     |
+| `%in% c(***, ***)` | a list of multiple values |
+
+summarize ex:
+
+``` {r, eval = FALSE}
+penguins |> filter(species == “Chinstrap”) |> group_by(sex) |> summarize(min = min(body_mass_g), max = max(body_mass_g)) |> mutate(range = max - min)
+```
 

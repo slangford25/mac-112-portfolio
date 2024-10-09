@@ -256,6 +256,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#what-plots-to-use" id="toc-what-plots-to-use" class="nav-link" data-scroll-target="#what-plots-to-use"><span class="header-section-number">11.0.1</span> What plots to use:</a></li>
   </ul></li>
   <li><a href="#multivariate-viz" id="toc-multivariate-viz" class="nav-link" data-scroll-target="#multivariate-viz"><span class="header-section-number">12</span> 5. Multivariate Viz</a></li>
+  <li><a href="#spatial-viz" id="toc-spatial-viz" class="nav-link" data-scroll-target="#spatial-viz"><span class="header-section-number">13</span> 6. Spatial Viz</a></li>
+  <li><a href="#effective-viz" id="toc-effective-viz" class="nav-link" data-scroll-target="#effective-viz"><span class="header-section-number">14</span> 7. Effective Viz</a></li>
+  <li><a href="#wrangling-verbs" id="toc-wrangling-verbs" class="nav-link" data-scroll-target="#wrangling-verbs"><span class="header-section-number">15</span> 8. Wrangling Verbs</a></li>
+  <li><a href="#wrangling-dates" id="toc-wrangling-dates" class="nav-link" data-scroll-target="#wrangling-dates"><span class="header-section-number">16</span> 9. Wrangling + Dates</a></li>
   </ul>
 </nav>
     </div>
@@ -338,6 +342,130 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>1 cat, 2 num: scatter (facet/color/shape, x, y), heatmap (y, x, shade), star (y, size, )</li>
 <li>3 num: scatter (x, y, size/shade)</li>
 </ul>
+</section>
+<section id="spatial-viz" class="level1" data-number="13">
+<h1 data-number="13"><span class="header-section-number">13</span> 6. Spatial Viz</h1>
+<ul>
+<li>Point map: a map that specific locations are plotted on (ex: favorite places in the twin cities).</li>
+<li>Contour map: plotting density/distribution on a map rather than individual points</li>
+<li>Choropleth Maps: plotting outcomes in different regions (ex: percentage of democratic votes in each state)</li>
+</ul>
+<p>Leaflet: a package that can be used to make interactive maps, commonly point maps common functions for leaflet:</p>
+<ul>
+<li>leaflet() (makes the leaflet)</li>
+<li>addTiles() (makes the base map)</li>
+<li>addMarkers()</li>
+<li>addPolygons()</li>
+<li>print() (need to print to see the leaflet)</li>
+</ul>
+<p>ggplot is typically better for making chloropleth maps than leaflet.</p>
+</section>
+<section id="effective-viz" class="level1" data-number="14">
+<h1 data-number="14"><span class="header-section-number">14</span> 7. Effective Viz</h1>
+<p>Effective visualizations are important in order to accurately portray your data in a way that people can understand.</p>
+<p>Visualizations can be good, ugly, bad, or wrong.</p>
+<ul>
+<li>Good: viz is clear, easy to understand, accessible, and helpful.</li>
+<li>Ugly: nothing is incorrect about the viz, but the overall aesthetic is ugly</li>
+<li>Bad: the viz is “unclear, confusing, overly complicated, or deceiving”</li>
+<li>Wrong: viz is incorrectly displaying the data and/or the trends</li>
+</ul>
+<p>In order to have effective viz you need to:</p>
+<ul>
+<li>have clear, concise titles/axes</li>
+<li>include a figure caption</li>
+<li>include an alt caption, for screen readers</li>
+<li>avoid using overly similar colors whenever possible</li>
+<li>add context</li>
+<li>make data anonymous when possible</li>
+</ul>
+</section>
+<section id="wrangling-verbs" class="level1" data-number="15">
+<h1 data-number="15"><span class="header-section-number">15</span> 8. Wrangling Verbs</h1>
+<p>tidyverse has many helpful functions that allow us to wrangle the data into a way that we can meaningfully create data viz.</p>
+<p>99.99% of data will not be entirely clean and ready to use. You will have to clean and reformat the data in order to use it.</p>
+<p>Some key functions to use are:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: left;">verb</th>
+<th style="text-align: left;">action</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><code>arrange</code></td>
+<td style="text-align: left;"><strong>arrange</strong> the <em>rows</em> according to some <em>column</em></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>filter</code></td>
+<td style="text-align: left;"><strong>filter</strong> out or obtain a subset of the <em>rows</em></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><code>select</code></td>
+<td style="text-align: left;"><strong>select</strong> a subset of <em>columns</em></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>mutate</code></td>
+<td style="text-align: left;"><strong>mutate</strong> or create a <em>column</em></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><code>summarize</code></td>
+<td style="text-align: left;">calculate a numerical <strong>summary</strong> of a <em>column</em></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>group_by</code></td>
+<td style="text-align: left;"><strong>group</strong> the <em>rows</em> by a specified <em>column</em></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="wrangling-dates" class="level1" data-number="16">
+<h1 data-number="16"><span class="header-section-number">16</span> 9. Wrangling + Dates</h1>
+<p>Order of the functions matter. If you want to arrange by one column but then only include 2 different columns in your final data frame, you need to do arrange first before selecting the columns or else you will get an error.</p>
+<p>Key syntax for filtering:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: left;">symbol</th>
+<th style="text-align: left;">meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><code>==</code></td>
+<td style="text-align: left;">equal to</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>!=</code></td>
+<td style="text-align: left;">not equal to</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><code>&gt;</code></td>
+<td style="text-align: left;">greater than</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>&gt;=</code></td>
+<td style="text-align: left;">greater than or equal to</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><code>&lt;</code></td>
+<td style="text-align: left;">less than</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>&lt;=</code></td>
+<td style="text-align: left;">less than or equal to</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><code>%in% c(***, ***)</code></td>
+<td style="text-align: left;">a list of multiple values</td>
+</tr>
+</tbody>
+</table>
+<p>summarize ex:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a>penguins <span class="sc">|&gt;</span> <span class="fu">filter</span>(species <span class="sc">==</span> “Chinstrap”) <span class="sc">|&gt;</span> <span class="fu">group_by</span>(sex) <span class="sc">|&gt;</span> <span class="fu">summarize</span>(<span class="at">min =</span> <span class="fu">min</span>(body_mass_g), <span class="at">max =</span> <span class="fu">max</span>(body_mass_g)) <span class="sc">|&gt;</span> <span class="fu">mutate</span>(<span class="at">range =</span> max <span class="sc">-</span> min)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 
 
 <!-- -->
@@ -817,60 +945,141 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       </a>
   </div>
 </nav><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
-<div class="sourceCode" id="cb2" data-shortcodes="false"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb2-1"><a href="#cb2-1"></a><span class="co">---</span></span>
-<span id="cb2-2"><a href="#cb2-2"></a><span class="an">title:</span><span class="co"> "Journal"</span></span>
-<span id="cb2-3"><a href="#cb2-3"></a><span class="co">---</span></span>
-<span id="cb2-4"><a href="#cb2-4"></a></span>
-<span id="cb2-5"><a href="#cb2-5"></a><span class="fu"># 3. Data Viz</span></span>
-<span id="cb2-6"><a href="#cb2-6"></a></span>
-<span id="cb2-7"><a href="#cb2-7"></a>Data Viz: displaying data in such a way that we can glean more information about the data, such as patterns, typical outcomes, and distribution.</span>
-<span id="cb2-8"><a href="#cb2-8"></a></span>
-<span id="cb2-9"><a href="#cb2-9"></a><span class="fu">### Components of graphs:</span></span>
-<span id="cb2-10"><a href="#cb2-10"></a><span class="ss">- </span>frame (sets up the grid and axes)</span>
-<span id="cb2-11"><a href="#cb2-11"></a><span class="ss">- </span>layer (adds the geometric elements that make up the graph, called geom_ in ggplot)</span>
-<span id="cb2-12"><a href="#cb2-12"></a><span class="ss">- </span>scales (changes color/size/shape/etc)</span>
-<span id="cb2-13"><a href="#cb2-13"></a><span class="ss">- </span>faceting (splits up the data )</span>
-<span id="cb2-14"><a href="#cb2-14"></a><span class="ss">- </span>theme (finer scale adjustments like font size)</span>
-<span id="cb2-15"><a href="#cb2-15"></a></span>
-<span id="cb2-16"><a href="#cb2-16"></a><span class="fu">### For one variable viz:</span></span>
-<span id="cb2-17"><a href="#cb2-17"></a><span class="ss">- </span>categorical: bar plot</span>
-<span id="cb2-18"><a href="#cb2-18"></a><span class="ss">- </span>numerical: histogram/density plot</span>
-<span id="cb2-19"><a href="#cb2-19"></a></span>
-<span id="cb2-20"><a href="#cb2-20"></a>ggplot syntax:</span>
-<span id="cb2-21"><a href="#cb2-21"></a><span class="in">```{r, eval=FALSE}</span></span>
-<span id="cb2-22"><a href="#cb2-22"></a><span class="in">ggplot(data = ___, aes(x = ___)) + </span></span>
-<span id="cb2-23"><a href="#cb2-23"></a><span class="in">  geom___(color = "___", fill = "___") + </span></span>
-<span id="cb2-24"><a href="#cb2-24"></a><span class="in">  labs(x = "___", y = "___")</span></span>
-<span id="cb2-25"><a href="#cb2-25"></a><span class="in">```</span></span>
-<span id="cb2-26"><a href="#cb2-26"></a></span>
-<span id="cb2-27"><a href="#cb2-27"></a><span class="fu">### When discussing data visualizations, you typically look at:</span></span>
-<span id="cb2-28"><a href="#cb2-28"></a><span class="ss">- </span>typical outcome</span>
-<span id="cb2-29"><a href="#cb2-29"></a><span class="ss">- </span>variability + range</span>
-<span id="cb2-30"><a href="#cb2-30"></a><span class="ss">- </span>shape</span>
-<span id="cb2-31"><a href="#cb2-31"></a><span class="ss">- </span>outliers</span>
-<span id="cb2-32"><a href="#cb2-32"></a></span>
-<span id="cb2-33"><a href="#cb2-33"></a></span>
-<span id="cb2-34"><a href="#cb2-34"></a><span class="fu"># 4. Bivariate Viz</span></span>
-<span id="cb2-35"><a href="#cb2-35"></a></span>
-<span id="cb2-36"><a href="#cb2-36"></a>Another way to look at the data is to look at relationships within the data. There are</span>
-<span id="cb2-37"><a href="#cb2-37"></a><span class="ss">- </span>Repsonse variables (dependent variables)</span>
-<span id="cb2-38"><a href="#cb2-38"></a><span class="ss">- </span>Predictors (independent variables)</span>
-<span id="cb2-39"><a href="#cb2-39"></a></span>
-<span id="cb2-40"><a href="#cb2-40"></a><span class="fu">### What plots to use:</span></span>
-<span id="cb2-41"><a href="#cb2-41"></a><span class="ss">- </span>2 quantitative: scatterplot</span>
-<span id="cb2-42"><a href="#cb2-42"></a><span class="ss">- </span>2 categorical: stacked bar/facet wrapped bar plot</span>
-<span id="cb2-43"><a href="#cb2-43"></a><span class="ss">- </span>1 quantitative, 1 categorical: violin plot, boxplot, stacked density plots.</span>
-<span id="cb2-44"><a href="#cb2-44"></a></span>
-<span id="cb2-45"><a href="#cb2-45"></a><span class="fu"># 5. Multivariate Viz</span></span>
-<span id="cb2-46"><a href="#cb2-46"></a></span>
-<span id="cb2-47"><a href="#cb2-47"></a>Which chart to use:</span>
-<span id="cb2-48"><a href="#cb2-48"></a></span>
-<span id="cb2-49"><a href="#cb2-49"></a><span class="ss">- </span>3 cat: bar (x, color, facet)</span>
-<span id="cb2-50"><a href="#cb2-50"></a><span class="ss">- </span>2 cat, 1 num: histogram/density (color, facet, x), box, violin (x, facet, y)</span>
-<span id="cb2-51"><a href="#cb2-51"></a><span class="ss">- </span>1 cat, 2 num: scatter (facet/color/shape, x, y), heatmap (y, x, shade), star (y, size, )</span>
-<span id="cb2-52"><a href="#cb2-52"></a><span class="ss">- </span>3 num: scatter (x, y, size/shade)</span>
-<span id="cb2-53"><a href="#cb2-53"></a></span>
-<span id="cb2-54"><a href="#cb2-54"></a></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb3" data-shortcodes="false"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb3-1"><a href="#cb3-1"></a><span class="co">---</span></span>
+<span id="cb3-2"><a href="#cb3-2"></a><span class="an">title:</span><span class="co"> "Journal"</span></span>
+<span id="cb3-3"><a href="#cb3-3"></a><span class="co">---</span></span>
+<span id="cb3-4"><a href="#cb3-4"></a></span>
+<span id="cb3-5"><a href="#cb3-5"></a><span class="fu"># 3. Data Viz</span></span>
+<span id="cb3-6"><a href="#cb3-6"></a></span>
+<span id="cb3-7"><a href="#cb3-7"></a>Data Viz: displaying data in such a way that we can glean more information about the data, such as patterns, typical outcomes, and distribution.</span>
+<span id="cb3-8"><a href="#cb3-8"></a></span>
+<span id="cb3-9"><a href="#cb3-9"></a><span class="fu">### Components of graphs:</span></span>
+<span id="cb3-10"><a href="#cb3-10"></a><span class="ss">- </span>frame (sets up the grid and axes)</span>
+<span id="cb3-11"><a href="#cb3-11"></a><span class="ss">- </span>layer (adds the geometric elements that make up the graph, called geom_ in ggplot)</span>
+<span id="cb3-12"><a href="#cb3-12"></a><span class="ss">- </span>scales (changes color/size/shape/etc)</span>
+<span id="cb3-13"><a href="#cb3-13"></a><span class="ss">- </span>faceting (splits up the data )</span>
+<span id="cb3-14"><a href="#cb3-14"></a><span class="ss">- </span>theme (finer scale adjustments like font size)</span>
+<span id="cb3-15"><a href="#cb3-15"></a></span>
+<span id="cb3-16"><a href="#cb3-16"></a><span class="fu">### For one variable viz:</span></span>
+<span id="cb3-17"><a href="#cb3-17"></a><span class="ss">- </span>categorical: bar plot</span>
+<span id="cb3-18"><a href="#cb3-18"></a><span class="ss">- </span>numerical: histogram/density plot</span>
+<span id="cb3-19"><a href="#cb3-19"></a></span>
+<span id="cb3-20"><a href="#cb3-20"></a>ggplot syntax:</span>
+<span id="cb3-21"><a href="#cb3-21"></a><span class="in">```{r, eval=FALSE}</span></span>
+<span id="cb3-22"><a href="#cb3-22"></a><span class="in">ggplot(data = ___, aes(x = ___)) + </span></span>
+<span id="cb3-23"><a href="#cb3-23"></a><span class="in">  geom___(color = "___", fill = "___") + </span></span>
+<span id="cb3-24"><a href="#cb3-24"></a><span class="in">  labs(x = "___", y = "___")</span></span>
+<span id="cb3-25"><a href="#cb3-25"></a><span class="in">```</span></span>
+<span id="cb3-26"><a href="#cb3-26"></a></span>
+<span id="cb3-27"><a href="#cb3-27"></a><span class="fu">### When discussing data visualizations, you typically look at:</span></span>
+<span id="cb3-28"><a href="#cb3-28"></a><span class="ss">- </span>typical outcome</span>
+<span id="cb3-29"><a href="#cb3-29"></a><span class="ss">- </span>variability + range</span>
+<span id="cb3-30"><a href="#cb3-30"></a><span class="ss">- </span>shape</span>
+<span id="cb3-31"><a href="#cb3-31"></a><span class="ss">- </span>outliers</span>
+<span id="cb3-32"><a href="#cb3-32"></a></span>
+<span id="cb3-33"><a href="#cb3-33"></a></span>
+<span id="cb3-34"><a href="#cb3-34"></a><span class="fu"># 4. Bivariate Viz</span></span>
+<span id="cb3-35"><a href="#cb3-35"></a></span>
+<span id="cb3-36"><a href="#cb3-36"></a>Another way to look at the data is to look at relationships within the data. There are</span>
+<span id="cb3-37"><a href="#cb3-37"></a><span class="ss">- </span>Repsonse variables (dependent variables)</span>
+<span id="cb3-38"><a href="#cb3-38"></a><span class="ss">- </span>Predictors (independent variables)</span>
+<span id="cb3-39"><a href="#cb3-39"></a></span>
+<span id="cb3-40"><a href="#cb3-40"></a><span class="fu">### What plots to use:</span></span>
+<span id="cb3-41"><a href="#cb3-41"></a><span class="ss">- </span>2 quantitative: scatterplot</span>
+<span id="cb3-42"><a href="#cb3-42"></a><span class="ss">- </span>2 categorical: stacked bar/facet wrapped bar plot</span>
+<span id="cb3-43"><a href="#cb3-43"></a><span class="ss">- </span>1 quantitative, 1 categorical: violin plot, boxplot, stacked density plots.</span>
+<span id="cb3-44"><a href="#cb3-44"></a></span>
+<span id="cb3-45"><a href="#cb3-45"></a><span class="fu"># 5. Multivariate Viz</span></span>
+<span id="cb3-46"><a href="#cb3-46"></a></span>
+<span id="cb3-47"><a href="#cb3-47"></a>Which chart to use:</span>
+<span id="cb3-48"><a href="#cb3-48"></a></span>
+<span id="cb3-49"><a href="#cb3-49"></a><span class="ss">- </span>3 cat: bar (x, color, facet)</span>
+<span id="cb3-50"><a href="#cb3-50"></a><span class="ss">- </span>2 cat, 1 num: histogram/density (color, facet, x), box, violin (x, facet, y)</span>
+<span id="cb3-51"><a href="#cb3-51"></a><span class="ss">- </span>1 cat, 2 num: scatter (facet/color/shape, x, y), heatmap (y, x, shade), star (y, size, )</span>
+<span id="cb3-52"><a href="#cb3-52"></a><span class="ss">- </span>3 num: scatter (x, y, size/shade)</span>
+<span id="cb3-53"><a href="#cb3-53"></a></span>
+<span id="cb3-54"><a href="#cb3-54"></a></span>
+<span id="cb3-55"><a href="#cb3-55"></a><span class="fu"># 6. Spatial Viz</span></span>
+<span id="cb3-56"><a href="#cb3-56"></a></span>
+<span id="cb3-57"><a href="#cb3-57"></a><span class="ss">- </span>Point map: a map that specific locations are plotted on (ex: favorite places in the twin cities).</span>
+<span id="cb3-58"><a href="#cb3-58"></a><span class="ss">- </span>Contour map: plotting density/distribution on a map rather than individual points</span>
+<span id="cb3-59"><a href="#cb3-59"></a><span class="ss">- </span>Choropleth Maps: plotting outcomes in different regions (ex: percentage of democratic votes in each state)</span>
+<span id="cb3-60"><a href="#cb3-60"></a></span>
+<span id="cb3-61"><a href="#cb3-61"></a>Leaflet: a package that can be used to make interactive maps, commonly point maps</span>
+<span id="cb3-62"><a href="#cb3-62"></a>common functions for leaflet:</span>
+<span id="cb3-63"><a href="#cb3-63"></a></span>
+<span id="cb3-64"><a href="#cb3-64"></a><span class="ss">- </span>leaflet() (makes the leaflet)</span>
+<span id="cb3-65"><a href="#cb3-65"></a><span class="ss">- </span>addTiles() (makes the base map)</span>
+<span id="cb3-66"><a href="#cb3-66"></a><span class="ss">- </span>addMarkers()</span>
+<span id="cb3-67"><a href="#cb3-67"></a><span class="ss">- </span>addPolygons()</span>
+<span id="cb3-68"><a href="#cb3-68"></a><span class="ss">- </span>print() (need to print to see the leaflet)</span>
+<span id="cb3-69"><a href="#cb3-69"></a></span>
+<span id="cb3-70"><a href="#cb3-70"></a>ggplot is typically better for making chloropleth maps than leaflet.</span>
+<span id="cb3-71"><a href="#cb3-71"></a></span>
+<span id="cb3-72"><a href="#cb3-72"></a></span>
+<span id="cb3-73"><a href="#cb3-73"></a><span class="fu"># 7. Effective Viz</span></span>
+<span id="cb3-74"><a href="#cb3-74"></a></span>
+<span id="cb3-75"><a href="#cb3-75"></a>Effective visualizations are important in order to accurately portray your data in a way that people can understand. </span>
+<span id="cb3-76"><a href="#cb3-76"></a></span>
+<span id="cb3-77"><a href="#cb3-77"></a>Visualizations can be good, ugly, bad, or wrong. </span>
+<span id="cb3-78"><a href="#cb3-78"></a></span>
+<span id="cb3-79"><a href="#cb3-79"></a><span class="ss">- </span>Good: viz is clear, easy to understand, accessible, and helpful.</span>
+<span id="cb3-80"><a href="#cb3-80"></a><span class="ss">- </span>Ugly: nothing is incorrect about the viz, but the overall aesthetic is ugly</span>
+<span id="cb3-81"><a href="#cb3-81"></a><span class="ss">- </span>Bad: the viz is “unclear, confusing, overly complicated, or deceiving”</span>
+<span id="cb3-82"><a href="#cb3-82"></a><span class="ss">- </span>Wrong: viz is incorrectly displaying the data and/or the trends</span>
+<span id="cb3-83"><a href="#cb3-83"></a></span>
+<span id="cb3-84"><a href="#cb3-84"></a>In order to have effective viz you need to:</span>
+<span id="cb3-85"><a href="#cb3-85"></a></span>
+<span id="cb3-86"><a href="#cb3-86"></a><span class="ss">- </span>have clear, concise titles/axes</span>
+<span id="cb3-87"><a href="#cb3-87"></a><span class="ss">- </span>include a figure caption</span>
+<span id="cb3-88"><a href="#cb3-88"></a><span class="ss">- </span>include an alt caption, for screen readers</span>
+<span id="cb3-89"><a href="#cb3-89"></a><span class="ss">- </span>avoid using overly similar colors whenever possible</span>
+<span id="cb3-90"><a href="#cb3-90"></a><span class="ss">- </span>add context</span>
+<span id="cb3-91"><a href="#cb3-91"></a><span class="ss">- </span>make data anonymous when possible</span>
+<span id="cb3-92"><a href="#cb3-92"></a></span>
+<span id="cb3-93"><a href="#cb3-93"></a></span>
+<span id="cb3-94"><a href="#cb3-94"></a><span class="fu"># 8. Wrangling Verbs</span></span>
+<span id="cb3-95"><a href="#cb3-95"></a></span>
+<span id="cb3-96"><a href="#cb3-96"></a>tidyverse has many helpful functions that allow us to wrangle the data into a way that we can meaningfully create data viz.</span>
+<span id="cb3-97"><a href="#cb3-97"></a></span>
+<span id="cb3-98"><a href="#cb3-98"></a>99.99% of data will not be entirely clean and ready to use. You will have to clean and reformat the data in order to use it.</span>
+<span id="cb3-99"><a href="#cb3-99"></a></span>
+<span id="cb3-100"><a href="#cb3-100"></a>Some key functions to use are: </span>
+<span id="cb3-101"><a href="#cb3-101"></a></span>
+<span id="cb3-102"><a href="#cb3-102"></a></span>
+<span id="cb3-103"><a href="#cb3-103"></a></span>
+<span id="cb3-104"><a href="#cb3-104"></a>| verb        | action                                            |</span>
+<span id="cb3-105"><a href="#cb3-105"></a>|:------------|:--------------------------------------------------|</span>
+<span id="cb3-106"><a href="#cb3-106"></a>| <span class="in">`arrange`</span>   | **arrange** the *rows* according to some *column* |</span>
+<span id="cb3-107"><a href="#cb3-107"></a>| <span class="in">`filter`</span>    | **filter** out or obtain a subset of the *rows*   |</span>
+<span id="cb3-108"><a href="#cb3-108"></a>| <span class="in">`select`</span>    | **select** a subset of *columns*                  |</span>
+<span id="cb3-109"><a href="#cb3-109"></a>| <span class="in">`mutate`</span>    | **mutate** or create a *column*                   |</span>
+<span id="cb3-110"><a href="#cb3-110"></a>| <span class="in">`summarize`</span> | calculate a numerical **summary** of a *column*   |</span>
+<span id="cb3-111"><a href="#cb3-111"></a>| <span class="in">`group_by`</span>  | **group** the *rows* by a specified *column*      |</span>
+<span id="cb3-112"><a href="#cb3-112"></a></span>
+<span id="cb3-113"><a href="#cb3-113"></a></span>
+<span id="cb3-114"><a href="#cb3-114"></a></span>
+<span id="cb3-115"><a href="#cb3-115"></a><span class="fu"># 9. Wrangling + Dates</span></span>
+<span id="cb3-116"><a href="#cb3-116"></a></span>
+<span id="cb3-117"><a href="#cb3-117"></a>Order of the functions matter. If you want to arrange by one column but then only include 2 different columns in your final data frame, you need to do arrange first before selecting the columns or else you will get an error.</span>
+<span id="cb3-118"><a href="#cb3-118"></a></span>
+<span id="cb3-119"><a href="#cb3-119"></a>Key syntax for filtering:</span>
+<span id="cb3-120"><a href="#cb3-120"></a></span>
+<span id="cb3-121"><a href="#cb3-121"></a>| symbol           | meaning                   |</span>
+<span id="cb3-122"><a href="#cb3-122"></a>|:-----------------|:--------------------------|</span>
+<span id="cb3-123"><a href="#cb3-123"></a>| <span class="in">`==`</span>               | equal to                  |</span>
+<span id="cb3-124"><a href="#cb3-124"></a>| <span class="in">`!=`</span>               | not equal to              |</span>
+<span id="cb3-125"><a href="#cb3-125"></a>| <span class="in">`&gt;`</span>               | greater than              |</span>
+<span id="cb3-126"><a href="#cb3-126"></a>| <span class="in">`&gt;=`</span>              | greater than or equal to  |</span>
+<span id="cb3-127"><a href="#cb3-127"></a>| <span class="in">`&lt;`</span>               | less than                 |</span>
+<span id="cb3-128"><a href="#cb3-128"></a>| <span class="in">`&lt;=`</span>              | less than or equal to     |</span>
+<span id="cb3-129"><a href="#cb3-129"></a>| <span class="in">`%in% c(***, ***)`</span> | a list of multiple values |</span>
+<span id="cb3-130"><a href="#cb3-130"></a></span>
+<span id="cb3-131"><a href="#cb3-131"></a>summarize ex:</span>
+<span id="cb3-132"><a href="#cb3-132"></a></span>
+<span id="cb3-133"><a href="#cb3-133"></a><span class="in">``` {r, eval = FALSE}</span></span>
+<span id="cb3-134"><a href="#cb3-134"></a><span class="in">penguins |&gt; filter(species == “Chinstrap”) |&gt; group_by(sex) |&gt; summarize(min = min(body_mass_g), max = max(body_mass_g)) |&gt; mutate(range = max - min)</span></span>
+<span id="cb3-135"><a href="#cb3-135"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
 
