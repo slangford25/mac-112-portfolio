@@ -134,3 +134,14 @@ summarize ex:
 penguins |> filter(species == “Chinstrap”) |> group_by(sex) |> summarize(min = min(body_mass_g), max = max(body_mass_g)) |> mutate(range = max - min)
 ```
 
+13. 
+| function            | arguments                 | returns           |
+|:--------------------|:--------------------------|:------------------|
+| `str_replace()`     | `x, pattern, replacement` | a modified string |
+| `str_replace_all()` | `x, pattern, replacement` | a modified string |
+| `str_to_lower()`    | `x`                       | a modified string |
+| `str_sub()`         | `x, start, end`           | a modified string |
+| `str_length()`      | `x`                       | a number          |
+| `str_detect()`      | `x, pattern`              | TRUE/FALSE        |
+
+
