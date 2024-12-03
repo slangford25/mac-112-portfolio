@@ -134,7 +134,102 @@ summarize ex:
 penguins |> filter(species == “Chinstrap”) |> group_by(sex) |> summarize(min = min(body_mass_g), max = max(body_mass_g)) |> mutate(range = max - min)
 ```
 
-13. 
+# 10. Reshaping Data
+
+Two kinds of reshaped data:
+
+- Aggregate: more general info about observations gained using functions like group_by() with summarize(), no info about individual observations
+- Raw data: original data that is just reshaped to be able to analyze.
+
+
+Pivoting:
+
+pivot wider: "widens" data by expanding two columns into multiple. One column provides the new column names and the other provides the values.
+
+```{r, eval = FALSE}
+data |> 
+  pivot_wider(names_from = col1, values_from = col2)
+```
+
+
+pivot longer: "lengthens" the data by collapsing several columns into two. Column names move to a new names_to column and values to a new values_to column.
+
+```{r, eval = FALSE}
+data |> 
+  pivot_longer(cols = c("columns we want"), names_to = "name of new names column", values_to = "name of new values column")
+```
+
+
+# 11. Joining Data
+
+Joining functions allow us to either filter one dataset based on another or to join two datasets togeher. There are two different types of joining functions:
+
+- mutating joins: left_join(), inner_join() and full_join()
+- filtering joins: semi_join(), anti_join()
+
+
+Mutating Joins:
+
+> left_join: join two datasets together, keep all rows in the left dataset and add in matching columns from right dataset. Automatically uses a common column to join datasets, but you can specify which one/ones you want to use as the join key.
+
+```{r, eval = FALSE}
+left_data %>% 
+  left_join(right_data, c("L_col" = "R_col")) # indicating that those two are the join key
+```
+
+> inner_join: keeps only the columns that are in both the left and right datasets.
+
+```{r, eval = FALSE}
+left_data %>% 
+  inner_join(right_data)
+```
+
+
+> full_join: keeps the columns in the right AND/OR the left datasets
+
+```{r, eval = FALSE}
+left_data %>% 
+  full_join(right_data)
+```
+
+
+Filtering Joins:
+
+> semi_join: keep all rows in left that match right
+
+```{r, eval = FALSE}
+left_data %>% 
+  semi_join(right_data)
+```
+
+> anti_join: keep all rows in left that do not match in right
+
+```{r, eval = FALSE}
+left_data %>% 
+  anti_join(right_data)
+```
+
+
+# 12. Factors
+
+When working with character strings, you can either use regex to wrangle them or convert them into factors.
+
+Some of the factor wrangling functions:
+
+-   functions for changing the **order** of factor levels
+    -   `fct_relevel()` = *manually* reorder levels
+    -   `fct_reorder()` = reorder levels according to values of another *variable*
+    -   `fct_infreq()` = order levels from highest to lowest frequency
+    -   `fct_rev()` = reverse the current order
+-   functions for changing the **labels** or values of factor levels
+    -   `fct_recode()` = *manually* change levels
+    -   `fct_lump()` = *group together* least common levels
+
+
+# 13. Strings
+
+Common string modifying/locating functions:
+
 | function            | arguments                 | returns           |
 |:--------------------|:--------------------------|:------------------|
 | `str_replace()`     | `x, pattern, replacement` | a modified string |
@@ -143,5 +238,30 @@ penguins |> filter(species == “Chinstrap”) |> group_by(sex) |> summarize(min
 | `str_sub()`         | `x, start, end`           | a modified string |
 | `str_length()`      | `x`                       | a number          |
 | `str_detect()`      | `x, pattern`              | TRUE/FALSE        |
+
+Summary of what each function does:
+
+- str_replace(x, pattern, replacement) finds the first part of x that matches the pattern and replaces it with replacement
+
+- str_replace_all(x, pattern, replacement) finds all instances in x that matches the pattern and replaces it with replacement
+
+- str_to_lower(x) converts all upper case letters in x to lower case
+
+- str_sub(x, start, end) only keeps a subset of characters in x, from start (a number indexing the first letter to keep) to end (a number indexing the last letter to keep)
+
+- str_length(x) records the number of characters in x
+
+- str_detect(x, pattern) is TRUE if x contains the given pattern and FALSE otherwise
+
+
+# 15. Data Import
+
+Rather than using absolute filepaths that will not work on other people's computers, use relative filepaths
+
+```{r, eval = FALSE}
+imdb_temp <- read_csv("../data/imdb_5000_messy.csv")
+
+#the .. means exit current folder
+```
 
 
